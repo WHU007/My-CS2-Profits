@@ -2,6 +2,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+my_green = '#6a994e'
+my_red = '#bc4749'
+
 # 1. 读数据
 df = pd.read_csv('data.csv')
 df['gain'] = df['Price'] * df['Weight']
@@ -12,7 +15,7 @@ df.reset_index(inplace=True)
 
 # 3. 画图
 plt.figure(figsize=(10, 6))
-colors = ['#6a994e' if g >= 0 else '#bc4749' for g in df['gain']]
+colors = [my_red if g >= 0 else my_green for g in df['gain']]
 
 # 关键：left=前一累计，高度=当前gain
 left = df['cum'] - df['gain']
@@ -27,7 +30,7 @@ total = df['gain'].sum()
 tag = "Totall Profit" if total >= 0 else "Total Loss"
 plt.text(0.5, 0.5, f"{tag}: {total:+.2f} CNY", transform=plt.gca().transAxes,
          ha='center', va='top', fontsize=24, fontweight='bold',
-         color='#6a994e' if total >= 0 else '#bc4749')
+         color=my_red if total >= 0 else my_green)
 
 # 6. 收尾
 plt.xlabel("Transaction Index")
