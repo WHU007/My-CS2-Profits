@@ -40,3 +40,16 @@ plt.grid(axis='y', linestyle='--', alpha=0.4)
 plt.tight_layout()
 plt.savefig("waterfall.png", dpi=300)
 plt.show()
+
+# 7. 更新README.md
+total = df['gain'].sum()
+tag = "Total Profit" if total >= 0 else "Total Loss"
+readme_content = f"""# My CS2 Profits
+
+{tag}: {total:+.2f} CNY
+
+![](./waterfall.png)
+"""
+
+with open("README.md", "w", encoding="utf-8") as f:
+    f.write(readme_content)
