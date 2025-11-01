@@ -1,5 +1,5 @@
 # My CS2 Profits
 
-Total Loss: -166.87 CNY
+Total Profit: +1095.50 CNY
 
 ![](./waterfall.png)
